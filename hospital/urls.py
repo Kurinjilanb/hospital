@@ -4,7 +4,7 @@ from hospitalapp.views import hospital_create, hospital_list, driver_page, updat
 
 urlpatterns = [
     path('hospital/create/', hospital_create, name='hospital_create'),
-    path('', hospital_list, name='hospital_list'),
+    path('fd', hospital_list, name='hospital_list'),
 
     path('driver/', driver_page, name='driver_page'),
     path('hospital/<int:pk>/update/', update_hospital, name='update_hospital'),
@@ -12,5 +12,5 @@ urlpatterns = [
     path('navigate/', navigate_to_destination, name='navigate_to_destination'),
     path('add_location/', add_location, name='add_location'),
     path('location_list/', location_list, name='location_list'),
-    path('api/', include('hospitalapp.urls')),
+    path('', include('api.urls')),
 ]
