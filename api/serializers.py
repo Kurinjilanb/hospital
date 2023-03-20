@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Location, Hospital
+from hospitalapp.models import Location, Hospital
 
 """
 LocationSerializer is used to serialize the Location model 
@@ -8,11 +8,11 @@ LocationSerializer is used to serialize the Location model
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ('id', 'name', 'address', 'latitude', 'longitude')
+        fields = '__all__' # Serialize all fields
 
 class HospitalSerializer(serializers.ModelSerializer):
     location = LocationSerializer() # Embed the location object in the hospital object
 
     class Meta:
         model = Hospital
-        fields = ('id', 'name', 'beds_available', 'location')
+        fields = '__all__' # Serialize all fields

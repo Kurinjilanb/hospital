@@ -6,10 +6,8 @@ from .models import Hospital
 from .models import Location
 import json
 import hospital.settings as settings
-from rest_framework.response import Response
-from rest_framework import generics
 from .models import Location, Hospital
-from .serializers import LocationSerializer, HospitalSerializer
+
 
 
 def hospital_create(request):
@@ -139,13 +137,3 @@ def add_location(request):
 def location_list(request):
     locations = Location.objects.all()
     return render(request, 'location/location_list.html', {'locations': locations})
-
-
-class LocationList(generics.ListCreateAPIView):
-    queryset = Location.objects.all()
-    serializer_class = LocationSerializer
-
-class HospitalList(generics.ListCreateAPIView):
-    queryset = Hospital.objects.all()
-    serializer_class = HospitalSerializer
-
